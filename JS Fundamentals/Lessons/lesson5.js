@@ -8,3 +8,7 @@ var ageIsMoreThanEighteen
 var isUSCitizen 
 var eligibilidadForDriversLicense = ageIsMoreThanEighteen && isUSCitizen
 console.log('This customer is eligible for DL: ' + eligibilidadForDriversLicense)
+
+//logical "Not"
+console.log(!true)
+console.log(6 !== 10)
