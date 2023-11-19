@@ -1,4 +1,5 @@
-import {test, Expect, expect} from '@playwright/test'
+import {test, expect} from '@playwright/test'
+import { LoginPage } from '../page-objects/loginPage'
 
 test.describe('Login' , function () {
 
@@ -9,41 +10,32 @@ test.describe('Login' , function () {
         await page.goto('https://test.sambasafety.io/')
 
     })
-    
-    test ('should login sucessfully', async ({page}) => {
 
-        const usernameField = page.locator('#idp-discovery-username')
-        const nextButton = page.locator('#idp-discovery-submit')
-        const passwordField = page.locator('#okta-signin-password')
-        const signinButton = page.locator('#okta-signin-submit')
-        
-        await usernameField.fill(email)
-        await nextButton.click()
-        await passwordField.fill(password)
-        await signinButton.click()
+    test ('should login successfully', async ({ page }) => {
+        const login = new LoginPage(page)
 
+        await login.Login(email, password)
         const myPeopleTitle = await page.locator('#people-table-title__text').textContent()
         expect(myPeopleTitle).toEqual(' My People ')
     })
 
-    test ('should fail, wrong username', async ({page}) => {
-        
-        const usernameField = page.locator('#idp-discovery-username')
-        const nextButton = page.locator('#idp-discovery-submit')
-        const passwordField = page.locator('#okta-signin-password')
-        const signinButton = page.locator('#okta-signin-submit')
-        
-        await usernameField.fill("wrongusername@gmail.com")
-        await nextButton.click()
-        await passwordField.fill(password)
-        await signinButton.click()
+    test ('should fail, wrong username', async ({ page }) => {
+        const login = new LoginPage(page)
 
+        await login.Login("wrongusername@gmail.com", password)
         const unableTosignIn = await page.locator('p').textContent()
         expect(unableTosignIn).toEqual('Unable to sign in')
-
-
     })
 
-});
+    test ('should fail, wrong password', async ({ page }) => {
+        const login = new LoginPage(page)
+
+        await login.Login(email, "wrongpassword")
+        const unableTosignIn = await page.locator('p').textContent()
+        expect(unableTosignIn).toEqual('Unable to sign in')
+    })
 
 
+
+
+})
