@@ -1,11 +1,21 @@
-import { Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
+
 
 export class LoginPage {
 
     private readonly page: Page
-
+    readonly usernameField: Locator 
+    readonly nextButton: Locator 
+    readonly passwordField: Locator
+    readonly signinButton: Locator
+    
     constructor(page: Page) {
         this.page = page
+        this.usernameField = this.page.locator('#idp-discovery-username')
+        this.nextButton = this.page.locator('#idp-discovery-submit')
+        this.passwordField = this.page.locator('#okta-signin-password')
+        this.signinButton = this.page.locator('#okta-signin-submit')
+        
     }
 
     /**
@@ -13,17 +23,24 @@ export class LoginPage {
      * @param email - Should be a valid Samba email address
      * @param password - Should be a valid Samba password
      */
-    async Login(email: string, password: string){
-        const usernameField = this.page.locator('#idp-discovery-username')
-        const nextButton = this.page.locator('#idp-discovery-submit')
-        const passwordField = this.page.locator('#okta-signin-password')
-        const signinButton = this.page.locator('#okta-signin-submit')
-    
-        await usernameField.fill(email)
-        await nextButton.click()
-        await passwordField.fill(password)
-        await signinButton.click()
+    async login(email: string, password: string){
+        
+        await this.usernameField.fill(email)
+        await this.nextButton.click()
+        await this.passwordField.fill(password)
+        await this.signinButton.click()
     
     }
+
+    async loginWithCredentials(){
+        
+        await this.usernameField.fill("ssjunipero+rayfferautoadmin2@gmail.com")
+        await this.nextButton.click()
+        await this.passwordField.fill("G0F0rBr0ke!")
+        await this.signinButton.click()
+    
+    }
+
+    
 
 }

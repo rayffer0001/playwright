@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test'
 
 test.describe('Login' , function () {
 
-    var email = 'ssjunipero+rayfferautoadmin1@gmail.com'
+    var email = 'ssjunipero+rayfferautoadmin2@gmail.com'
     var password = 'G0F0rBr0ke!'
 
     test.beforeEach(async ({page}) => {

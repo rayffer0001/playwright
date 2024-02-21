@@ -25,11 +25,28 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+    
+      /* Base URL to use in actions like `await page.goto('/')`. */
+      baseURL: 'https://www.saucedemo.com/?ref=hackernoon.com',
+      /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+      trace: 'on-first-retry',
+      headless:false,
+      launchOptions:{
+        // Slows the test execution so you can see it happen, don't go over 250
+        slowMo: 500
+      
+    },
+
+
+
+
+
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    //'on-first-retry',
   },
 
   /* Configure projects for major browsers */
@@ -50,10 +67,12 @@ export default defineConfig({
     },
 
     /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
+    {
+      name: 'Mobile Chrome',
+      use: {
+        headless: false,
+        ...devices['Pixel 5'] },
+    },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
