@@ -39,12 +39,12 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Clean up
-            //deleteDir()
-        }
-    }
+    // post {
+    //     always {
+    //         // Clean up
+    //         //deleteDir()
+    //     }
+    // }
 
 
     
