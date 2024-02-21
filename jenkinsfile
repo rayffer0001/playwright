@@ -35,7 +35,8 @@ pipeline {
                     //xvfb('npx cypress run')
                     //xvfb('npx playwright test')
                     //sh 'npx playwright test'
-                    sh npx playwright test --project=chromium
+                    //sh npx playwright test --project=chromium
+                    npm run testcase
                 }
             }
         }
