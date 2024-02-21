@@ -33,7 +33,8 @@ pipeline {
                 script {
                     
                     //xvfb('npx cypress run')
-                    xvfb('npx playwright test')
+                    //xvfb('npx playwright test')
+                    sh 'npx playwright test'
                 }
             }
         }
