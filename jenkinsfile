@@ -24,7 +24,7 @@ pipeline {
                 script {
                     
                     sh 'npm install',
-                    sh 'npx playwright install'
+                    sh 'npm i playwright'
                 }
             }
         }
