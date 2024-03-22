@@ -34,7 +34,7 @@ export class LoginPage {
 
     async loginWithCredentials(){
         
-        await this.usernameField.fill("ssjunipero+rayfferautoadmin2@gmail.com")
+        await this.usernameField.fill("ssjunipero+rayfferautoadmin3@gmail.com")
         await this.nextButton.click()
         await this.passwordField.fill("G0F0rBr0ke!")
         await this.signinButton.click()

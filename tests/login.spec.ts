@@ -3,7 +3,7 @@ import { LoginPage } from '../page-objects/loginPage'
 
 test.describe('Login' , function () {
 
-    var email = 'ssjunipero+rayfferautoadmin2@gmail.com'
+    var email = 'ssjunipero+rayfferautoadmin3@gmail.com'
     var password = 'G0F0rBr0ke!'
 
     test.beforeEach(async ({page}) => {
